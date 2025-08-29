@@ -24,13 +24,13 @@
                 while ($produto = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     echo "<tr>";
                     echo "<td>".$produto['id']."</td>";
-                    echo "<td>".$produto['nome']."</td>";
+                    echo "<td>".$produto['nome']."</td>";   
                     echo "<td>".$produto['preco']."</td>";
                     echo "<td>".$produto['quantidade']."</td>";
                     echo "
                     <td>
                         <div class='btn-group' role='group' aria-label='Basic mixed styles example'>
-                            <a href='#' type='button' class='btn btn-success'>Atualizar</a>
+                            <a href='form_atualizar.php?id=".$produto['id']."' type='button' class='btn btn-success'>Atualizar</a>
                             <a href='#' type='button' class='btn btn-danger'>Apagar</a>
                         </div>
                     </td>
