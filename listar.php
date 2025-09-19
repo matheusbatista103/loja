@@ -1,52 +1,74 @@
 <?php
-    include 'cabecalho.php';
+include 'cabecalho.php';
+require 'conexao.php';
+
+if (isset($_GET['delete_id'])) {
+    $delete_id = (int)$_GET['delete_id'];
+    $sql = "DELETE FROM produtos WHERE id = :id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':id', $delete_id, PDO::PARAM_INT);
+    $stmt->execute();
+
+    header('Location: listar.php');
+    exit;
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $id = $_POST['id'] ?? null;
+    $nome = $_POST['produto'] ?? '';
+    $preco = $_POST['preco'] ?? '';
+    $quantidade = $_POST['quantidade'] ?? '';
+
+    if ($id && $nome && $preco && $quantidade) {
+        $sql = "UPDATE produtos SET nome = :nome, preco = :preco, quantidade = :quantidade WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindValue(':nome', $nome);
+        $stmt->bindValue(':preco', $preco);
+        $stmt->bindValue(':quantidade', $quantidade);
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
+
+        header('Location: listar.php');
+        exit;
+    } else {
+        echo "<p style='color:red;'>Erro: Dados incompletos para atualização.</p>";
+    }
+}
 ?>
+
+<head>
+    <link rel="stylesheet" href="estilos/style.css">
+</head>
+
 <body>
     <div class="container">
-        <h1>Bem vindo ao meu 1° sistema web com CRUD</h1>
-        <h3>Matheus de Pauli Batista</h3>
-        <div class="container">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">NOME</th>
-                    <th scope="col">PREÇO</th>
-                    <th scope="col">QUANTIDADE</th>
-                    <th scope="col">OPÇÕES</th>
-                </tr>
-            </thead>
-            <tbody>
-            <?php
-                require 'conexao.php';
-                $sql = "SELECT * FROM produtos";
-                $stmt = $pdo->query($sql);
-                while ($produto = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    echo "<tr>";
-                    echo "<td>".$produto['id']."</td>";
-                    echo "<td>".$produto['nome']."</td>";   
-                    echo "<td>".$produto['preco']."</td>";
-                    echo "<td>".$produto['quantidade']."</td>";
-                    echo "
-                    <td>
-                        <div class='btn-group' role='group' aria-label='Basic mixed styles example'>
-                            <a href='form_atualizar.php?id=".$produto['id']."' type='button' class='btn btn-success'>Atualizar</a>
-                            <a href='#' type='button' class='btn btn-danger'>Apagar</a>
-                        </div>
-                    </td>
-                    ";
-                    echo"</tr>";
+        <h1>Sistema Web com CRUD</h1>
+        <h2>Lista de Produtos</h2>
 
-                    echo "ID: ". $produto['id'] . "<br>";
-                    echo "Nome: ". $produto['nome'] . "<br>";
-                    echo "Preço R$: ". $produto['preco'] . "<br>";
-                    echo "EStoque: ". $produto['quantidade'] . "<br>";
-                }
+        <div class="cards-container">
+            <?php
+            $sql = "SELECT * FROM produtos";
+            $stmt = $pdo->query($sql);
+            while ($produto = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                ?>
+                <div class="card">
+                    <h3><?= htmlspecialchars($produto['nome']) ?></h3>
+                    <p><strong>ID:</strong> <?= $produto['id'] ?></p>
+                    <p><strong>Preço:</strong> R$ <?= number_format($produto['preco'], 2, ',', '.') ?></p>
+                    <p><strong>Quantidade:</strong> <?= $produto['quantidade'] ?></p>
+                    <div class="btn-group">
+                        <a href="form_atualizar.php?id=<?= $produto['id'] ?>" class="btn btn-danger">Atualizar</a>
+                        <a href="listar.php?delete_id=<?= $produto['id'] ?>" class="btn btn-warning" onclick="return confirm('Confirma exclusão?')">Apagar</a>
+                    </div>
+                </div>
+                <?php
+            }
             ?>
-            </tbody>
-        </table>
+        </div>
+
+        <a href="index.php" class="btn btn-warning btn-listar">Voltar</a>
     </div>
-<div class="container">
-    <a href="index.php" class="btn btn-warning">Voltar</a>
-</div>
-</body>
+
+<?php
+include 'rodape.php';
+?>

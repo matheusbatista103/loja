@@ -1,6 +1,9 @@
 <?php 
     include 'cabecalho.php';
 ?>
+<head>
+    <link rel="stylesheet" href="estilos/style.css">
+</head>
 <body>
     <div class="container">
         <h2>CADASTRO DE PRODUTOS</h2>

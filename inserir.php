@@ -18,3 +18,9 @@
         echo "Erro ao inserir produto.";
     }
 ?>
+<head>
+    <link rel="stylesheet" href="estilos/style.css">
+</head>
+<body>
+            <a href="form_cadastrar.php" class="btn btn-warning">Voltar</a>
+</body>

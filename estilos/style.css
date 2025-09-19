@@ -1,0 +1,294 @@
+/* Resetando estilos padrões do navegador */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5; /* fundo claro */
+    color: #333; /* texto escuro */
+}
+
+.container {
+    width: 80%;
+    max-width: 900px;
+    margin: 50px auto;
+    background-color: #ffffff; /* branco */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Títulos */
+h1, h2 {
+    color: #6f42c1;  /* Roxo escuro */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 2em;
+    margin-bottom: 30px;
+}
+
+h3 {
+    font-size: 1.3em;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #555;
+}
+
+/* Grupo de botões */
+.btn-group {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* Botões */
+.btn {
+    padding: 10px 20px;
+    font-size: 1.1em;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    display: inline-block;
+    user-select: none;
+    color: white;
+}
+
+/* Botão primário (roxo escuro) */
+.btn-primary {
+    background-color: #6f42c1; /* Roxo escuro */
+}
+
+.btn-primary:hover {
+    background-color: #7e57c2; /* Roxo médio */
+    transform: translateY(-2px);
+}
+
+.btn-primary:active {
+    background-color: #5a33a1; /* Roxo escuro mais forte */
+    transform: translateY(2px);
+}
+
+/* Botão danger (roxo médio) */
+.btn-danger {
+    background-color: #9b59b6; /* Roxo médio */
+}
+
+.btn-danger:hover {
+    background-color: #aa6ed1; /* Roxo claro */
+    transform: translateY(-2px);
+}
+
+.btn-danger:active {
+    background-color: #8e44ad; /* Roxo mais escuro */
+    transform: translateY(2px);
+}
+
+/* Botão warning (roxo claro) */
+.btn-warning {
+    background-color: #be90d4; /* Roxo claro */
+    color: white;
+}
+
+.btn-warning:hover {
+    background-color: #c9a8e2; /* Roxo claríssimo */
+    transform: translateY(-2px);
+}
+
+.btn-warning:active {
+    background-color: #a37fc8; /* Roxo médio */
+    transform: translateY(2px);
+}
+
+/* Botão success (roxo esverdeado) */
+.btn-success {
+    background-color: #8e44ad; /* Roxo */
+}
+
+.btn-success:hover {
+    background-color: #9b59b6;
+    transform: translateY(-2px);
+}
+
+.btn-success:active {
+    background-color: #7e3790;
+    transform: translateY(2px);
+}
+
+/* Inputs do formulário */
+form input[type="text"],
+form input[type="number"],
+form input[type="email"],
+form input[type="password"],
+form textarea,
+form select {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 20px;
+    border: 1.5px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    color: #333;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+form input[type="text"]:focus,
+form input[type="number"]:focus,
+form input[type="email"]:focus,
+form input[type="password"]:focus,
+form textarea:focus,
+form select:focus {
+    outline: none;
+    border-color: #6f42c1; /* Roxo escuro */
+    background-color: #fafafa;
+}
+
+/* Espaçamentos para o form */
+.mb-3 {
+    margin-bottom: 15px;
+}
+
+/* Tabela */
+table.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+table.table thead tr {
+    background-color: #6f42c1; /* Roxo escuro */
+    color: white;
+    text-align: left;
+}
+
+table.table th,
+table.table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+}
+
+table.table tbody tr:hover {
+    background-color: #dcd0f7; /* Lilás claro */
+    cursor: default;
+}
+
+/* Rodapé */
+footer {
+    margin-top: 40px;
+    text-align: center;
+    color: #777;
+    font-size: 0.9em;
+}
+
+footer a {
+    color: #6f42c1; /* Roxo escuro */
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* ======= Estilos para os cartões pequenos lado a lado (fundo branco + botões roxos) ======= */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.card {
+    background-color: #fff; /* fundo branco */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 15px;
+    width: 180px;
+    color: #333; /* texto escuro */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: default;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(111, 66, 193, 0.3);
+}
+
+.card h3 {
+    color: #6f42c1; /* roxo escuro */
+    margin-bottom: 12px;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+.card p {
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: #444;
+}
+
+.card .btn-group {
+    margin-top: 15px;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+/* Botões roxos para os cartões */
+.card .btn-danger {
+    background-color: #6f42c1; /* roxo escuro */
+    color: white;
+    flex: 1;
+    padding: 6px 10px;
+    font-size: 0.85em;
+    border-radius: 5px;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.card .btn-danger:hover {
+    background-color: #7e57c2; /* roxo médio */
+}
+
+.card .btn-warning {
+    background-color: #9b59b6; /* roxo médio */
+    color: white;
+    flex: 1;
+    padding: 6px 10px;
+    font-size: 0.85em;
+    border-radius: 5px;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.card .btn-warning:hover {
+    background-color: #aa6ed1; /* roxo claro */
+}
+
+/* Responsividade dos cartões */
+@media (max-width: 500px) {
+    .card {
+        width: 100%;
+        max-width: 300px;
+    }
+}
